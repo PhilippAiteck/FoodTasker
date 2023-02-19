@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,6 +13,8 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round" type="text/css">
 
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
@@ -25,12 +28,23 @@
     ></script>
   </head>
   <body>
-    {% block sidebar %}
-    <!--Display sidebar code here -->
-    {% endblock %} 
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 sidebar">
+          {% block sidebar %}
+          <!--Display sidebar code here -->
+          {% endblock %} 
+        </div>
+        
+        <div class="col-md-10 offset-md-2 content">
+          {% block body %}
+          <!--Display body code here -->
+          {% endblock %}
+        </div>
+      </div>
+    </div>
     
-    {% block body %}
-    <!--Display body code here -->
-    {% endblock %}
+    
   </body>
 </html>
